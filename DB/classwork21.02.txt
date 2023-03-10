@@ -1,0 +1,101 @@
+    ✅1. Создайте таблицу makers в БД mydb;
+
+CREATE DATABASE mydb;
+
+\c mydb
+
+    ✅2. В этой таблице создайте следующие поля:
+     Mentor_id 
+     Name
+     Position (choose from: mentor, tracker, scrum)
+     Birthdate
+     Salary
+
+CREATE TABLE makers (
+Menthor_id SERIAL,
+Name VARCHAR(50),
+Position VARCHAR(7),
+Birthday int,
+Salary int);
+
+    ✅Заполните таблицу не менее, чем 15 записями
+
+INSERT INTO makers (Name, Position, Birthday, Salary) VALUES
+('Sanzhar','Mentor', 2000, 2000),
+('Sultan', 'Tracker', 2000, 1500),
+('Aigerim', 'Scrum', 2002, 1500),
+('Aibek', 'Mentor', 1999, 1000),
+('Sezim', 'Tracker', 1998, 1500),
+('Samat', 'Scrum', 2001, 5500),
+('Aika', 'Mentor', 1996, 8000),
+('Meerim', 'Tracker', 1999, 6000),
+('Tariel', 'Scrum', 1995, 9000),
+('Robert', 'Mentor', 1990, 7000),
+('Bermet', 'Tracker', 2002, 3000),
+('Saikal', 'Scrum', 1997, 4400),
+('Azamat', 'Mentor', 1998, 5000),
+('Kanybek', 'Tracker', 2000, 3500),
+('Bek', 'Scrum', 2002, 6600);
+
+SELECT * FROM makers;
+
+    ✅Вытащите position и name в одном столбце под
+    названием mentors
+
+SELECT name || ' ' || position AS mentors FROM makers;
+
+    ✅Вытащите все поля в порядке убывания возрастов
+    менторов
+
+SELECT * FROM makers ORDER BY birthday;
+
+    ✅Вытащите только те записи, в которых позиция либо
+    mentor, либо tracker, и имя начиналось на ‘A’ или ‘S’
+
+1) SELECT * FROM makers WHERE position = 'Mentor' or position = 'Tracker';
+2) SELECT * FROM makers WHERE name LIKE 'S%' or name LIKE 'A%';
+Не получается объединить 2 условия. Выдает ошибку!
+
+    ✅Вытащите только те записи, в которых salary находится
+    в промежутке от 5000$ до 8000$
+
+SELECT * FROM makers WHERE salary BETWEEN 5000 and 8000;
+
+    ✅Вытащите первые три записи, в которых максимальная
+    зарплата
+
+SELECT * FROM makers ORDER BY salary DESC LIMIT 3;
+
+    ✅Вытащите количество работников, группируя по
+    позиции position (сколько работников на каждой
+    позиции)
+
+SELECT COUNT(*) FROM makers WHERE position = 'Mentor';
+SELECT COUNT(*) FROM makers WHERE position = 'Tracker'; 
+SELECT COUNT(*) FROM makers WHERE position = 'Scrum'; 
+
+    ✅Определите среднюю заработную плату у scrum
+
+SELECT AVG(salary) FROM makers WHERE position = 'Scrum';
+
+    ✅Вытащите имя и длину имён работников  в порядке
+    возрастания длин их имён
+
+select name, length(name) from makers order by length(name);
+
+    ✅Измените одну запись в таблице (любую)
+
+UPDATE makers SET salary=5000 WHERE menthor_id=9;
+
+    ✅Удалите одну запись из таблицы (любую)
+
+DELETE FROM makers WHERE salary < 2000;
+
+    ✅Удалите поле salary из таблицы
+
+ALTER TABLE makers DROP COLUMN salary;
+
+    ✅Переименуйте поле mentor_id на employee_id
+
+ALTER TABLE makers
+RENAME COLUMN menthor_id TO employee_id;

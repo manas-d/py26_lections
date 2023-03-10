@@ -1,0 +1,39 @@
+CREATE DATABASE MyDB;
+
+\c mydb
+
+CREATE TABLE Employees(                                                                       
+  Id SERIAL,
+  Name VARCHAR(50),                                              
+  Last_name VARCHAR(50),
+  Country VARCHAR(50),                                                        
+  Email VARCHAR(50) UNIQUE,
+  Age INT,                                                              
+  Programming_Language varchar(50),
+  Experience FLOAT                                                          
+);
+
+INSERT INTO Employees (Name, Last_name, Country, Email, Age, Programming_Language, Experience)
+VALUES
+('John', 'Doe', 'USA', 'johndoe@example.com', 25, 'Python', 2.5),
+('Jane', 'Doe', 'USA', 'janedoe@example.com', 30, 'JavaScript', 3.2),
+('Michael', 'Smith', 'Canada', 'michaelsmith@example.com', 28, 'Python', 1.7),
+('Emily', 'Johnson', 'USA', 'emilyjohnson@example.com', 32, 'JavaScript', 4.5),
+('Robert', 'Brown', 'UK', 'robertbrown@example.com', 22, 'Python', 0.8),
+('Emma', 'Wilson', 'Australia', 'emmawilson@example.com', 27, 'JavaScript', 2.9),
+('William', 'Taylor', 'UK', 'williamtaylor@example.com', 24, 'Python', 1.2),
+('Olivia', 'Anderson', 'Australia', 'oliviaanderson@example.com', 29, 'JavaScript', 3.8),
+('Ethan', 'Lee', 'USA', 'ethanlee@example.com', 26, 'Python', 2.1),
+('Sophia', 'Harris', 'Canada', 'sophiaharris@example.com', 31, 'JavaScript', 4.2),
+('David', 'Clark', 'USA', 'davidclark@example.com', 23, 'Python', 0.5),
+('Ava', 'Lewis', 'UK', 'avalewis@example.com', 28, 'JavaScript', 2.2),
+('Joseph', 'Robinson', 'Australia', 'josephrobinson@example.com', 26, 'Python', 1.9),
+('Chloe', 'Walker', 'USA', 'chloewalker@example.com', 33, 'JavaScript', 5.0),
+('James', 'Parker', 'Canada', 'jamesparker@example.com', 25, 'Python', 2.8),
+('Mia', 'Evans', 'UK', 'miaevans@example.com', 27, 'JavaScript', 3.1),
+('Alexander', 'Edwards', 'Australia', 'alexanderedwards@example.com', 30, 'Python', 2.3),
+('Isabella', 'Collins', 'USA', 'isabellacollins@example.com', 29, 'JavaScript', 3.9),
+('Daniel', 'Stewart', 'Canada', 'danielstewart@example.com', 24, 'Python', 1.5),
+('Grace', 'Murphy', 'UK', 'gracemurphy@example.com', 31, 'JavaScript', 4.0);
+
+SELECT * FROM employees;

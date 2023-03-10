@@ -1,0 +1,21 @@
+1. SELECT plaintext FROM wordform LIMIT 10;
+2. SELECT plaintext FROM wordform WHERE plaintext ILIKE 'a%';
+3. SELECT title, genretype FROM work WHERE genretype = 'p';
+4. SELECT AVG(totalparagraphs) FROM work WHERE genretype = 't';
+5. SELECT title FROM work WHERE totalwords >=(SELECT AVG(totalwords) FROM work);
+6. SELECT charname, speechcount, work.title FROM character JOIN character_work ON character.charid = character_work.charid LEFT JOIN work ON character_work.workid = work.workid
+7. SELECT ROUND(avg(speechcount)), work.title FROM character JOIN character_work ON character.charid = character_work.charid JOIN work ON character_work.workid = work.workid WHERE work.title = 'Romeo and Juliet' GROUP BY work.title;
+8. 
+select sum(wordcount) from paragraph where section = 0;
+select sum(wordcount) from paragraph where section = 1;
+select sum(wordcount) from paragraph where section = 2;
+select sum(wordcount) from paragraph where section = 3;
+select sum(wordcount) from paragraph where section = 4;
+select sum(wordcount) from paragraph where section = 5;
+9. select charname from character where speechcount between 15 and 30;
+10. select title from work where year between 1600 and 1699;
+11. select title from work where longtitle ilike '%the%';
+12. select distinct section from paragraph;
+13. SELECT chapterid, description, work.title FROM chapter JOIN work ON chapter.workid = work.workid;
+14. SELECT paragraphnum, character.charname, character.speechcount FROM paragraph JOIN character ON paragraph.charid = character.charid;
+15. SELECT paragraphnum, work.title, work.year FROM paragraph JOIN work ON paragraph.workid = work.workid;
